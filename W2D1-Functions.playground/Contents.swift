@@ -17,9 +17,10 @@ func sayHello() {
 //: Notice that the playground doesn't show anything to the left of the `print` statement. That's because this code hasn't run. We've created a function called `sayHello`, and described what that function does, but we havn't run the `sayHello` function yet.
 //: In order to run it, we have to *call* the `sayHello` function. Let's do that now by uncommenting this line (We comment out a line by putting // in front of the line of code. This makes the playground not run this line of code. To uncomment a line remove the // from the front of it. This will allow the playground to run this line of code):
 
-//sayHello()
+sayHello()
 
 //: The power of writing a function is that we can now repeat this code whenever we want. Feel free to call `sayHello` a few times below:
+sayHello()
 
 //: Now our `sayHello` function is pretty cool, but we might want to say hello to a specific person.
 //: Functions can take one or more "parameters" or inputs, and do something with that input. Take this example function:
@@ -35,22 +36,28 @@ func greet(name: String) {
 //: Try to call this function with your name, so it greets you.
 //:
 //: Hint: put your name, wrapped in quotes, between the parentheses `()`.
-
+greet(name: "Ernest")
 
 
 
 //: ### Challenge 2
 //:
 //: Now take the code your wrote in the last playground to print out a grammatical description of our bicycleCount, and write a function that takes in an Int representing how many bicycles we have, and prints out a description of how many bicycles we have. You can call the function `pluralize`.
-
+func pluralize(bicycleCount: Int){
+    if bicycleCount < 2 {
+        print ("There is \(bicycleCount) bicycle.")
+    } else {
+        print ("There are \(bicycleCount) bicycles.")
+    }
+}
 
 
 
 // Test it by uncommenting these lines:
 
-// pluralize(bicycleCount: 1)
-// pluralize(bicycleCount: 0)
-// pluralize(bicycleCount: 100)
+pluralize(bicycleCount: 1)
+pluralize(bicycleCount: 0)
+pluralize(bicycleCount: 100)
 
 //: Not only can functions take in parameters, but they can return values. So far we've only written functions that don't return anything, they just print stuff. Here is an example of a function that takes in an Int and returns an Int
 
@@ -62,21 +69,31 @@ func increment(input: Int) -> Int {
 var result = increment(input: 10)
 
 // In this example the returned Int is stored inside the variable `result`.
-
+result
 
 //: ### Challenge 3
 //:
 //: Using the `increment` function as an example, re-write the `pluralize` function (call it `pluralizedString`) so it returns a String instead of printing.
-
+func pluralizedString(bicycleCount: Int) -> String {
+    var myResult = ""
+    if bicycleCount < 2 {
+        myResult = "There is \(bicycleCount) bicycle."
+        
+    } else {
+        myResult = "There are \(bicycleCount) bicycles."
+        
+    }
+    return myResult
+}
 
 
 
 
 // Test it by uncommenting the lines below:
 
-//var str1 = pluralizedString(bicycleCount: 1)
-//var str2 = pluralizedString(bicycleCount: 0)
-//var str3 = pluralizedString(bicycleCount: 100)
+var str1 = pluralizedString(bicycleCount: 1)
+var str2 = pluralizedString(bicycleCount: 0)
+var str3 = pluralizedString(bicycleCount: 100)
 
 
 //: ## Bonus Challenge
@@ -94,7 +111,17 @@ var result = increment(input: 10)
 //: 2) a plural noun string (e.g. "bicycles")
 //: 3) a count of how many (e.g. 100)
 //:
-
+func pluralizedWord(singular: String, pluralNoun: String, count: Int)->String{
+    var myResult = ""
+    if count < 2 {
+        myResult = "There is \(count) \(singular)."
+        
+    } else {
+        myResult = "There are \(count) \(pluralNoun)."
+        
+    }
+    return myResult
+}
 
 
 
@@ -102,9 +129,9 @@ var result = increment(input: 10)
 
 // Test your function by uncommenting:
 
-// pluralizedWord(singular: "octopus", pluralNoun: "octopi", count: 1)
-// pluralizedWord(singular: "woman", pluralNoun: "women", count: 2)
-// pluralizedWord(singular: "apple", pluralNoun: "apples", count: 0)
+pluralizedWord(singular: "octopus", pluralNoun: "octopi", count: 2)
+pluralizedWord(singular: "woman", pluralNoun: "women", count: 2)
+pluralizedWord(singular: "apple", pluralNoun: "apples", count: 0)
 
 
 
